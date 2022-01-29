@@ -1,0 +1,179 @@
+"csrf_token": "OPTTAIzT5MraULx-z0WG7zdDTBOe3YT60-tWWMCO08s",
+    "logout_token": "e4-Xfgeh1rKZOZ699DfTY5eJiD4UGD1eTT0Nhr39IdE"
+
+
+enter value in webform:-
+
+{
+    "webform_id": "contact",
+    "name": "ratan",
+    "email": "ratan@gmail.com",
+    "subject": "apllication",
+    "message": "hello"
+}
+
+
+
+
+Create taxonomy term:-
+
+http://localhost/my_site/web/taxonomy/term?_format=json
+
+
+{
+  
+  "vid": [
+    {
+      "target_id": "tags"
+    }
+  ],
+  "name": [
+    {
+      "value": "RESTtag",
+      "lang": "en"
+    }
+  ]
+}
+
+
+Add taxonomy term in node :-
+
+
+{
+  "type":[{"target_id":"article"}],
+  "title":[{"value":"field"}],
+  "body":[{"value":"How are you?"}],
+  "field_tags": [{"target_id": "1"}]
+}
+
+create node :-
+
+http://localhost/my_site/web/node?_format=json
+
+{
+  "type":[{"target_id":"article"}],
+  "title":[{"value":"Hello World"}],
+  "body":[{"value":"How are you?"}]
+}
+
+or 
+
+{
+  "type": [{"target_id":"article"}],
+  "title": [{"value":"delhi"}],
+  "body": [{"value":"I'm also trying to add a file field in my register form but it can't work because anonymous users are still not allowed to upload images via REST"}],
+  "field_textbody": [{"value": "users are still not allowed to upload images via REST" }],
+  "field_tags": [{"target_id": "1"}],
+
+}
+
+
+
+create active new user :-
+
+http://localhost/my_site/web/entity/user?_format=json
+
+{
+    
+    "name":[{"value":"oneuser"}],
+    "mail":[{"value":"oneuser@test.fr"}],
+    "roles":[{"target_id":"administrator"}],
+    "pass":[{"value":"oneuser"}],
+    "status":[{"value":"1"}]
+}
+
+new user create :-
+
+{
+    "current_user": {
+        "uid": "3",
+        "roles": [
+            "authenticated",
+            "administrator"
+        ],
+        "name": "oneuser"
+    },
+    "csrf_token": "WpICRxCD0bMPtsiTybYE7qoyKLtkTrHeJ-68cZh9U0s",
+    "logout_token": "reEc4CMD9U28AKK3-77Emg1SnunglDhIAnKbE89fjWU"
+}
+
+
+
+image upload:-
+
+https://www.drupal.org/node/2941420
+
+
+http://localhost/my_site/web/file/upload/node/article/field_image?_format=json
+Content-Type : application/octet-stream
+Content-Disposition :  filename="test.jpg"
+X-CSRF-Token : 'TOKEN-Given-By-Drupal'
+
+
+
+user login :-
+
+http://localhost/my_site/web/user/login?_format=json
+{
+    "name": "oneuser",
+    "pass": "oneuser"
+}
+
+
+get token:-
+
+http://localhost/myproject/web/rest/session/token
+
+9NI3yC5PHHeIJo_W6xl3cMAFTiYbSmXwQnas0SAbPbw
+
+
+
+post value in paragraph:-
+
+http://localhost/myproject/web/entity/paragraph?_format=json
+
+{
+    "type": [{"target_id":"adidas"}],
+    "field_text": [{"value": "hello", "format":"basic_html"}]
+}
+
+ or 
+
+{
+    "type":[{"target_id":"adidas"}],
+    "field_text":[{"value":"aaaaaaaaaaa","format":"full_html"}]
+}
+
+
+post value in paragraph:-
+
+http://localhost/myproject/web/entity/paragraph?_format=json
+
+{
+  "type": [{"target_id":"article"}],
+  "title": [{"value":"delhi10"}],
+  "body": [{"value":"I'm also trying to add a file field in my register form "}],
+    "field_para": [
+        {
+            "target_id": 6,
+            "target_revision_id": 6,
+            "target_type": "user"
+            
+        }
+    ]
+
+}
+
+
+
+create new drupal :-
+
+$ composer create-project 'drupal/recommended-project:^8.9' myproject
+
+
+advance rest ui create module
+
+https://www.valuebound.com/resources/blog/how-to-create-custom-rest-resources-for-post-methods-drupal-8
+
+
+https://drupal-learn.blogspot.com/2019/03/custom-rest-resource-with-get-and-post.html 
